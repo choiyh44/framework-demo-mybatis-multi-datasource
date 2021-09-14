@@ -1,0 +1,51 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.x2bee.demo.app.repository.x2bee.Sample2Mapper">
+	<select id="selectAllSampleList" resultType="Sample2">
+		/* Sample2.selectAllSampleList */
+		select
+			id,
+			name,
+			description,
+			sys_reg_dtime,
+			sys_regr_id,
+			sys_mod_dtime,
+			sys_modr_id
+		from sample2
+	</select>
+
+	<select id="selectSampleById" parameterType="int" resultType="Sample2">
+		/* Sample2.selectSampleById */
+		select
+			id,
+			name,
+			description,
+			sys_reg_dtime,
+			sys_regr_id,
+			sys_mod_dtime,
+			sys_modr_id
+		from sample2
+		where id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="Sample2">
+		/* Sample2 insert */
+		insert into sample2 (
+			name,
+			description,
+			sys_reg_dtime,
+			sys_regr_id,
+			sys_mod_dtime,
+			sys_modr_id
+		) values (
+			#{name},
+			#{description},
+			now(),
+			'testadmin',
+			now(),
+			'testadmin'
+		)
+	</insert>
+</mapper>
